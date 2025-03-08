@@ -2,6 +2,7 @@ using System.Linq;
 using Unity.Cinemachine;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [Header("Physics Materials")]
     [SerializeField] private PhysicsMaterial rough;
     [SerializeField] private PhysicsMaterial smooth;
+
 
     private readonly int doubleJump = 2;
     private Rigidbody rb;
@@ -111,5 +113,10 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         rb.linearVelocity = Vector3.zero;
         rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
+    }
+    public void UpdatePlayerMaxSpeed(float speed)
+    {
+        maxSpeed = speed;
+        Debug.Log("Max Speed Updated to: " + maxSpeed);
     }
 }
